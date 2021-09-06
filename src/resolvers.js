@@ -1,3 +1,4 @@
+const {prisma} = require('./database.ts');
 const resolvers = {
     Category: {
         id: (parent, args, context, info) => parent.id,
@@ -8,24 +9,54 @@ const resolvers = {
       },
       Query: {
         allCategories: (parent, args) => {
-          return categories.find({})
+          return prisma.category.findMany()
         },
         category: (parent, args) => {
-          return categories.find((category) => category.id === Number(args.id))
+          return prisma.category.findUnique({
+            where: { id: Number(args.id) },
+          });
         },
       },
       Mutation:{
         increaseCounter:(parent, args)=>{  
-            const categoryToInc = categories.find((category) => category.id === Number(args.id))
-            categoryToInc.counter = categoryToInc.counter +1
-            return categoryToInc
+            return prisma.category.update({
+                where:{
+                    id: Number(args.id)
+                },
+                data:{
+                   counter: counter+1
+                }
+            })
         },
         decreaseCounter:(parent, args)=>{  
-            const categoryToInc = categories.find((category) => category.id === Number(args.id))
-            categoryToInc.counter = categoryToInc.counter -1
-            return categoryToInc
+            return prisma.category.update({
+                where:{
+                    id: Number(args.id)
+                },
+                data:{
+                   counter: counter-1
+                }
+            })
+        },
+        addCategory:(parent, args)=>{  
+           return prisma.category.create({
+               data:{
+                   latitude: args.latitude,
+                   longitude: args.longitude,
+                   category: args.category,
+                   counter: args.counter
+               }
+           })
+        },
+        deleteCategory:(parent, args)=>{  
+            return prisma.category.delete({
+                where:{
+                   id: Number(args.id)
+                }
+            })
         },
       },
+      
 }
 
 module.exports = {

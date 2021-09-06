@@ -18,6 +18,8 @@ const typeDefs = gql`
   type Mutation {
     increaseCounter(id: ID!): Category!
     decreaseCounter(id: ID!): Category!
+    addCategory(latitude:Int!, longitude:Int!, category:String!, counter:Int!): Category!
+    deleteCategory(id:ID!): Category!
   }
 `
 

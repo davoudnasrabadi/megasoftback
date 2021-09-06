@@ -6,3 +6,11 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model Category {
+  id        Int    @id @unique @default(autoincrement())
+  latitude  Int
+  longitude Int
+  category  String
+  counter   Int
+}
