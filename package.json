@@ -4,7 +4,7 @@
   "description": "Back-end code for megasoft recruitment exercise using node, graphql &amp; prisma and",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "seed": "node ./src/seed.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/davoudnasrabadi/megasoftback/issues"
   },
-  "homepage": "https://github.com/davoudnasrabadi/megasoftback#readme"
+  "homepage": "https://github.com/davoudnasrabadi/megasoftback#readme",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
 }
