@@ -49,7 +49,7 @@ const server = http.createServer(async (req , res)=>{
      
      //@route /api/category/:id 
      //@method PATCH
-     //Uopdate a category
+     //Uopdate counter of a category
      else if(req.url.match(/\/api\/category\/([0-9]+)/) && req.method === "PATCH"){
              //get the id from url
             const id = req.url.split("/")[3];
