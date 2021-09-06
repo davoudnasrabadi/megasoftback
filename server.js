@@ -10,13 +10,16 @@ const server = http.createServer(async (req , res)=>{
      //@desc GET all categories
      
      if(req.url === "/api/category" && req.method === "GET"){
-
+         await getAll(res);
+          
      }
       //@route /api/category/:id 
       //@method GET
      //@desc GET a category
-     else if(req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "GET"){
-
+     else if(req.url.match(/\/api\/category\/([0-9]+)/) && req.method === "GET"){
+         // get id from url
+         const id = req.url.split("/")[3];
+         await getWithId(id,res);
      }
 
      //@route /api/category
@@ -34,14 +37,14 @@ const server = http.createServer(async (req , res)=>{
      //@route /api/category/:id 
      //@method DELETE
      //DELETE a category
-     else if(req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "DELETE"){
+     else if(req.url.match(/\/api\/category\/([0-9]+)/) && req.method === "DELETE"){
              
      }
      
      //@route /api/category/:id 
      //@method PATCH
      //Uopdate a category
-     else if(req.url.match(/\/api\/todos\/([0-9]+)/) && req.method === "PATCH"){
+     else if(req.url.match(/\/api\/category\/([0-9]+)/) && req.method === "PATCH"){
 
      }
 

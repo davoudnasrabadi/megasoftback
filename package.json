@@ -4,6 +4,7 @@
   "description": "Back-end code for megasoft recruitment exercise using node, graphql &amp; prisma and",
   "main": "server.js",
   "scripts": {
+    "dev":"nodemon server.js",
     "seed": "node ./src/seed.js"
   },
   "repository": {
@@ -18,6 +19,9 @@
   },
   "homepage": "https://github.com/davoudnasrabadi/megasoftback#readme",
   "dependencies": {
-    "mysql": "^2.18.1"
+    "mysql2": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

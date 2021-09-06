@@ -1,5 +1,5 @@
 
-const mysql  = require('mysql');
+const mysql  = require('mysql2');
 
 async function runSeed(){
     let query0 = "CREATE DATABASE IF NOT EXISTS mydb1";
