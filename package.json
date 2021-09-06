@@ -1,0 +1,20 @@
+{
+  "name": "megasoftback",
+  "version": "1.0.0",
+  "description": "Back-end code for megasoft recruitment exercise using node, graphql &amp; prisma and",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davoudnasrabadi/megasoftback.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davoudnasrabadi/megasoftback/issues"
+  },
+  "homepage": "https://github.com/davoudnasrabadi/megasoftback#readme"
+}
