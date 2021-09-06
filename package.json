@@ -20,9 +20,16 @@
   "dependencies": {
     "@prisma/client": "^2.30.3",
     "apollo-server": "^3.3.0",
-    "graphql": "^15.5.3"
+    "graphql": "^15.5.3",
+    "graphql-scalars": "^1.10.1"
   },
   "devDependencies": {
-    "prisma": "^2.30.3"
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^16.7.10",
+    "@types/ws": "^7.4.7",
+    "prisma": "^2.30.3",
+    "ts-node": "^10.2.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.2"
   }
 }
