@@ -28,9 +28,13 @@ const server = http.createServer(async (req , res)=>{
      else if(req.url === "/api/category" && req.method === "POST"){
            
         let category_data = await getReqData(req);
+        const {id,latitude,longitude,category,counter} = JSON.parse(category_data);
+        if(!latitude || !longitude || !category || !counter){
+            res.writeHead(400,{'Content-Type':'application/json'});
+            res.end(JSON.stringify({message:'Bad request...try again'}));
+        }
         await create(JSON.parse(category_data),res);
-        res.writeHead(200,{'Content-Type':'application/json'});
-        res.end(JSON.stringify(category_data));
+        
      }
      
 
@@ -38,14 +42,24 @@ const server = http.createServer(async (req , res)=>{
      //@method DELETE
      //DELETE a category
      else if(req.url.match(/\/api\/category\/([0-9]+)/) && req.method === "DELETE"){
-             
+              //get the id from url
+            const id = req.url.split("/")[3];
+            await deleteWithId(id,res);
      }
      
      //@route /api/category/:id 
      //@method PATCH
      //Uopdate a category
      else if(req.url.match(/\/api\/category\/([0-9]+)/) && req.method === "PATCH"){
-
+             //get the id from url
+            const id = req.url.split("/")[3];
+            let category_data = await getReqData(req);
+            const {counter} = JSON.parse(category_data);
+            if(!counter){
+                res.writeHead(400,{'Content-Type':'application/json'});
+                res.end(JSON.stringify({message:'Bad request, send new counter and try again'}));
+            }
+            await UpdateWithId(id,counter,res);
      }
 
 
