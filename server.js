@@ -1,6 +1,8 @@
 const http =require('http');
 const PORT = process.env.PORT || 8080;
 
+const {getAll,getWithId,deleteWithId,UpdateWithId,create} = require('./Controllers.js');
+const {getReqData} = require('./utils.js');
 
 const server = http.createServer(async (req , res)=>{
      //@route /api/category
@@ -21,7 +23,11 @@ const server = http.createServer(async (req , res)=>{
      //@method POST
      //@desc POST a category
      else if(req.url === "/api/category" && req.method === "POST"){
-
+           
+        let category_data = await getReqData(req);
+        await create(JSON.parse(category_data),res);
+        res.writeHead(200,{'Content-Type':'application/json'});
+        res.end(JSON.stringify(category_data));
      }
      
 
