@@ -24,7 +24,9 @@ const resolvers = {
                     id: Number(args.id)
                 },
                 data:{
-                   counter: counter+1
+                   counter:{
+                       increment:1
+                   }
                 }
             })
         },
@@ -34,7 +36,9 @@ const resolvers = {
                     id: Number(args.id)
                 },
                 data:{
-                   counter: counter-1
+                   counter:{
+                       decrement:1
+                   }
                 }
             })
         },
