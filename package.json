@@ -4,7 +4,7 @@
   "description": "Back-end code for megasoft recruitment exercise using node, graphql &amp; prisma and",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --timeout 10000",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\""
   },
   "repository": {
@@ -28,7 +28,11 @@
     "@types/graphql": "^14.5.0",
     "@types/node": "^16.7.10",
     "@types/ws": "^7.4.7",
+    "chai": "^4.3.4",
+    "mocha": "^9.1.1",
     "prisma": "^2.30.3",
+    "should": "^13.2.3",
+    "supertest": "^6.1.6",
     "ts-node": "^10.2.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.2"
