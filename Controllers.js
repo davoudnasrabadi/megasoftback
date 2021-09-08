@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-const pool = require('./src/db');
+const {pool} = require('./src/db');
 
 async function getAll(res){
    pool.getConnection((err,conn)=>{

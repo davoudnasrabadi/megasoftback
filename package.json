@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "seed": "node ./src/seed.js"
+    "seed": "node ./src/seed.js",
+    "test": "mocha --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,10 @@
     "mysql2": "^2.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.1.1",
+    "nodemon": "^2.0.12",
+    "should": "^13.2.3"
   }
 }
