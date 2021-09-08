@@ -4,7 +4,7 @@
   "description": "Back-end code for megasoft recruitment exercise using node, graphql &amp; prisma and",
   "main": "server.js",
   "scripts": {
-    "dev":"nodemon server.js --ignore client",
+    "dev": "nodemon server.js",
     "seed": "node ./src/seed.js"
   },
   "repository": {

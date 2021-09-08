@@ -1,21 +1,23 @@
-let pool = require('./src/db.js');
+const mysql = require('mysql2');
+const pool = require('./src/db');
 
 async function getAll(res){
-    pool.getConnection((err,conn)=>{
-        if(err){
-           res.writeHead(500,{'Content-Type':'application/json'});
-           res.end(JSON.stringify({message:'Internal error'}));
-        }
-        let sql = "SELECT * FROM Category";
-        conn.query(sql,(err,result)=>{
-           if(err){
-               res.writeHead(500,{'Content-Type':'application/json'});
-               res.end(JSON.stringify({message:'Internal error'}));
-           }
-           res.writeHead(200,{'Content-Type':'application/json'});
-           res.end(JSON.stringify(result));
-        });
-   });
+   pool.getConnection((err,conn)=>{
+      if(err){
+         res.writeHead(500,{'Content-Type':'application/json'});
+         res.end(JSON.stringify({message:'Internal error'}));
+      }
+      let sql = "SELECT * FROM Category";
+      conn.query(sql,(err,result)=>{
+         if(err){
+             res.writeHead(500,{'Content-Type':'application/json'});
+             res.end(JSON.stringify({message:'Internal error'}));
+         }
+         res.writeHead(200,{'Content-Type':'application/json'});
+         res.end(JSON.stringify(result));
+      });
+      conn.release();
+ });
 }
 
 
@@ -71,11 +73,12 @@ async function UpdateWithId(id,counter,res){
                res.end(JSON.stringify({message:'Internal error'}));
            }
            else if(result != undefined){
-                let message = `Items updated: `+result.affectedRows;
-                res.end(JSON.stringify({message:message}));
+
+            res.writeHead(200,{'Content-Type':'application/json'});
+            let message = `Items updated: `+result.affectedRows;
+            res.end(JSON.stringify({message:message}));
            }
            else{
-            console.log('mim')
             res.writeHead(500,{'Content-Type':'application/json'});
             res.end(JSON.stringify({message:'Internal error'}));
            }
@@ -85,7 +88,6 @@ async function UpdateWithId(id,counter,res){
 }
 
 async function create(category,res){
-   
     pool.getConnection((err,conn)=>{
          if(err){
             res.writeHead(500,{'Content-Type':'application/json'});

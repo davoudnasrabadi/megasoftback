@@ -1,3 +1,4 @@
+const { copyFileSync } = require('fs');
 const http =require('http');
 const PORT = process.env.PORT || 8080;
 
@@ -8,10 +9,9 @@ const server = http.createServer(async (req , res)=>{
      //@route /api/category
      //@method @GET
      //@desc GET all categories
-     
      if(req.url === "/api/category" && req.method === "GET"){
-         await getAll(res);
-          
+        await getAll(res);
+       
      }
       //@route /api/category/:id 
       //@method GET
@@ -26,13 +26,13 @@ const server = http.createServer(async (req , res)=>{
      //@method POST
      //@desc POST a category
      else if(req.url === "/api/category" && req.method === "POST"){
-           
         let category_data = await getReqData(req);
         const {id,latitude,longitude,category,counter} = JSON.parse(category_data);
         if(!latitude || !longitude || !category || !counter){
             res.writeHead(400,{'Content-Type':'application/json'});
             res.end(JSON.stringify({message:'Bad request...try again'}));
         }
+        res.setHeader('Access-Control-Allow-Origin',true);
         await create(JSON.parse(category_data),res);
         
      }
