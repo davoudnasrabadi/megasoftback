@@ -10,7 +10,7 @@ For using REST-API:
 
 * To seed database: npm run seed
 
-* To run server: node run dev
+* To run server: npm run dev
 
 * To run tests: npm run test
 
